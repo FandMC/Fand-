@@ -6,26 +6,146 @@
 }
 
 body {
+    background-image: url('background.png'); /* 背景图片路径 */
+    background-size: cover; /* 图片覆盖整个背景 */
+    background-position: center+20px;
+    background-repeat: no-repeat; /* 不重复背景图 */
+    background-attachment: fixed; /* 固定背景，页面滚动时背景不动 */
     font-family: Arial, sans-serif;
     background-color: #000;
-    color: #f1c40f;
+    color: #4caf50; /* 默认绿色文本颜色 */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 浅色主题 */
+body.light-theme {
+    background-image: url('background_light.png');
+    background-color: #f9f9f9;
+    color: #333;
 }
 
 /* 顶部栏样式 */
 header {
-    width: 100%;
+    width: calc(100% - 200px); /* 避开左侧边栏 */
+    max-width: 100%;
     padding: 1rem;
     background-color: #333;
-    color: #f1c40f;
+    color: #4caf50;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     position: fixed;
     top: 0;
-    left: 200px; /* 避开左侧边栏 */
+    left: 200px;
     z-index: 1000;
+    box-sizing: border-box;
+}
+
+header h1 {
+    margin-right: auto;
+}
+
+/* 顶部导航链接样式化为按钮 */
+header nav a {
+    color: #4caf50; /* 链接文本颜色 */
+    background-color: #444; /* 链接背景色 */
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    border-radius: 5px; /* 圆角 */
+    text-decoration: none; /* 去除下划线 */
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header nav a:hover {
+    background-color: #4caf50;
+    color: #333;
+}
+
+/* 浅色主题的顶部栏 */
+body.light-theme header {
+    background-color: #eee;
+    color: #333;
+}
+
+body.light-theme header h1 {
+    color: #333;
+}
+
+body.light-theme header nav a {
+    background-color: #ddd;
+    color: #333;
+}
+
+body.light-theme header nav a:hover {
+    background-color: #333;
+    color: #f9f9f9;
+}
+
+/* GitHub链接样式 */
+.github-link {
+    color: #4caf50;
+    background-color: #fff; /* 始终保持白色背景 */
+    padding: 0.5rem;
+    border-radius: 50%; /* 圆形背景 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* 设置图标的宽度 */
+    height: 40px; /* 设置图标的高度 */
+    transition: color 0.3s, background-color 0.3s;
+    margin-left: 1rem;
+}
+
+.github-link svg {
+    width: 24px; /* 调整SVG的大小 */
+    height: 24px;
+    fill: #333; /* 确保SVG图标颜色不被主题影响 */
+}
+
+.github-link:hover {
+    color: #fff;
+    background-color: #4caf50;
+}
+
+/* 浅色主题的GitHub链接 */
+body.light-theme .github-link {
+    background-color: #fff; /* 始终保持白色背景 */
+}
+
+body.light-theme .github-link svg {
+    fill: #333; /* 浅色主题下图标颜色 */
+}
+
+/* 主题切换按钮样式 */
+#theme-toggle {
+    background-color: #444;
+    color: #4caf50;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: #4caf50;
+    color: #333;
+}
+
+/* 浅色主题的主题切换按钮 */
+body.light-theme #theme-toggle {
+    background-color: #ddd;
+    color: #333;
+}
+
+body.light-theme #theme-toggle:hover {
+    background-color: #333;
+    color: #f9f9f9;
 }
 
 /* 主体布局 */
@@ -35,7 +155,7 @@ header {
     width: 100%;
     max-width: 1200px;
     margin: 6rem auto 0;
-    padding-left: 200px;
+    padding-left: 200px; /* 避开左侧边栏 */
     padding-bottom: 2rem;
 }
 
@@ -53,18 +173,35 @@ header {
     z-index: 900;
 }
 
+/* 浅色主题的侧边栏 */
+body.light-theme .sidebar {
+    background-color: #ddd;
+}
+
 .sidebar button {
     background: #333;
-    color: #f1c40f;
+    color: #4caf50;
     border: none;
     padding: 1rem;
     margin-bottom: 0.5rem;
     cursor: pointer;
     text-align: left;
+    border-radius: 8px; /* 添加圆角 */
+    transition: background-color 0.3s;
 }
 
 .sidebar button:hover {
     background: #444;
+}
+
+/* 浅色主题的侧边栏按钮 */
+body.light-theme .sidebar button {
+    background-color: #eee;
+    color: #333;
+}
+
+body.light-theme .sidebar button:hover {
+    background-color: #ccc;
 }
 
 /* 内容区样式 */
@@ -85,6 +222,7 @@ main {
 /* 增加资源板块标题与资源列表之间的距离 */
 .content-section h2 {
     margin-bottom: 2rem;
+    color: inherit; /* 确保标题颜色与主题切换 */
 }
 
 /* 资源卡片样式 */
@@ -96,11 +234,17 @@ main {
 
 .resource-card {
     background-color: #222;
-    color: #f1c40f;
+    color: #4caf50;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     text-align: left;
+}
+
+/* 浅色主题的资源卡片 */
+body.light-theme .resource-card {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 .icon {
@@ -115,18 +259,30 @@ main {
     display: inline-block;
     padding: 0.6rem 1rem;
     margin-top: 1rem;
-    background-color: #f1c40f;
-    color: #222;
+    background-color: #4caf50; /* 深色主题下的绿色背景 */
+    color: #222; /* 按钮文本颜色 */
     border-radius: 5px;
     font-weight: bold;
     text-decoration: none;
     text-align: center;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 增加按钮阴影 */
 }
 
 .download-link:hover {
-    background-color: #333;
-    color: #f1c40f;
+    background-color: #333; /* 悬停时的深色背景 */
+    color: #4caf50; /* 悬停时的绿色文本颜色 */
+}
+
+/* 浅色主题的下载按钮 */
+body.light-theme .download-link {
+    background-color: #333; /* 浅色主题下的深灰背景 */
+    color: #4caf50; /* 浅色主题下的绿色文本颜色 */
+}
+
+body.light-theme .download-link:hover {
+    background-color: #444;
+    color: #f9f9f9;
 }
 
 /* 底部栏样式 */
@@ -135,7 +291,13 @@ footer {
     padding: 1rem;
     text-align: center;
     background-color: #333;
-    color: #f1c40f;
+    color: #4caf50;
     margin-top: auto;
-    padding-left: 200px;
+    padding-left: 200px; /* 避开左侧边栏 */
+}
+
+/* 浅色主题的底部栏 */
+body.light-theme footer {
+    background-color: #ddd;
+    color: #333;
 }

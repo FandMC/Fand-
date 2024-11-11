@@ -13,3 +13,7 @@ function showSection(sectionId) {
 window.onload = () => {
     showSection('home');
 };
+// JavaScript函数，用于切换深浅主题
+function toggleTheme() {
+    document.body.classList.toggle('light-theme');
+}
