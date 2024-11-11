@@ -101,8 +101,8 @@ body.light-theme header nav a:hover {
 }
 
 .github-link svg {
-    width: 24px; /* 调整SVG的大小 */
-    height: 24px;
+    width: 40px; /* 调整SVG的大小 */
+    height: 40px;
     fill: #333; /* 确保SVG图标颜色不被主题影响 */
 }
 
