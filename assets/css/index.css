@@ -1,0 +1,38 @@
+/* 基本样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+.download-list {
+    padding: 2rem;
+}
+
+.download-list h2 {
+    color: #333;
+}
+
+.download-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.download-list li a {
+    color: blue;
+    text-decoration: none;
+}
+
+.download-list li a:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
