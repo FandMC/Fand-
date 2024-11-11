@@ -7,96 +7,102 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #000; /* 纯黑背景 */
-    color: #f1c40f; /* 黄色文本 */
+    background-color: #000;
+    color: #f1c40f;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    align-items: center;
 }
 
 /* 顶部栏样式 */
 header {
     width: 100%;
     padding: 1rem;
-    background-color: #333; /* 深色背景 */
-    color: #f1c40f; /* 黄色文本 */
+    background-color: #333;
+    color: #f1c40f;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     position: fixed;
     top: 0;
+    left: 200px; /* 避开左侧边栏 */
     z-index: 1000;
 }
 
-header h1 {
-    font-size: 1.5rem;
-}
-
-header nav a {
-    color: #f1c40f; /* 黄色链接 */
-    margin: 0 1rem;
-    text-decoration: none;
-}
-
-header nav a:hover {
-    color: #fff; /* 悬停时变为白色 */
-}
-
-/* 主内容样式 */
-main {
-    padding-top: 6rem; /* 顶部栏的高度补充 */
-    width: 100%;
-    max-width: 800px; /* 限制内容宽度 */
-    text-align: center; /* 内容文字居中 */
+/* 主体布局 */
+.container {
+    display: flex;
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Section 间距 */
-section {
-    margin-bottom: 2rem; /* 设置各部分之间的间距 */
-}
-
-/* 资源列表和资源卡片样式 */
-.resource-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-}
-
-.resource-card {
-    background-color: #222; /* 深色卡片背景 */
-    color: #f1c40f; /* 黄色文本 */
-    padding: 1.5rem;
     width: 100%;
-    max-width: 400px; /* 限制卡片宽度 */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+    max-width: 1200px;
+    margin: 6rem auto 0;
+    padding-left: 200px;
+    padding-bottom: 2rem;
+}
+
+/* 左侧导航栏样式 */
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    padding: 1rem;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+}
+
+.sidebar button {
+    background: #333;
+    color: #f1c40f;
+    border: none;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
     text-align: left;
 }
 
-.resource-card h3 {
-    margin-bottom: 0.5rem;
+.sidebar button:hover {
+    background: #444;
 }
 
-.resource-card .description {
-    margin-bottom: 1rem;
+/* 内容区样式 */
+main {
+    flex-grow: 1;
+    padding: 1rem;
 }
 
-.resource-card .download-link {
-    color: #f1c40f; /* 黄色下载链接 */
-    text-decoration: none;
-    font-weight: bold;
+.content-section {
+    display: none;
+    margin-bottom: 3rem;
 }
 
-.resource-card .download-link:hover {
-    color: #fff; /* 悬停时变为白色 */
+.content-section.active {
+    display: block;
 }
-/* 图标样式 */
+
+/* 增加资源板块标题与资源列表之间的距离 */
+.content-section h2 {
+    margin-bottom: 2rem;
+}
+
+/* 资源卡片样式 */
+.resource-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.resource-card {
+    background-color: #222;
+    color: #f1c40f;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+
 .icon {
     width: 25px;
     height: 25px;
@@ -104,12 +110,32 @@ section {
     margin-right: 0.5rem;
 }
 
+/* 下载按钮样式 */
+.download-link {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    margin-top: 1rem;
+    background-color: #f1c40f;
+    color: #222;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.download-link:hover {
+    background-color: #333;
+    color: #f1c40f;
+}
+
 /* 底部栏样式 */
 footer {
     width: 100%;
     padding: 1rem;
     text-align: center;
-    background-color: #333; /* 深色背景 */
-    color: #f1c40f; /* 黄色文本 */
-    margin-top: 2rem; /* 与主内容分隔开 */
+    background-color: #333;
+    color: #f1c40f;
+    margin-top: auto;
+    padding-left: 200px;
 }
